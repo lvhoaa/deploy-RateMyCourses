@@ -4,12 +4,13 @@ from .forms import CreateNewRating
 import datetime
 from .chatgpt import chatgpt_summarize
 from .profanity_check import profanity_check
+import allauth 
 
 def home(request):
     # with open("main\data\courses.json") as json_data:
     #     courses =json.load(json_data)
     courses = Course.objects.all()
-    
+    print(allauth.__version__)    
     return render(request,'home.html',{"courses":courses})
 
 def courseHome(request,courseCode):
