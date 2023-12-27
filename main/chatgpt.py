@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-client = OpenAI(api_key="")
+client = OpenAI(api_key="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")
 
 def chatgpt_summarize(comment):
     prompt = "I want you to participate in my project Rate My Course where you have to summarize each review about the course in 3 words. Your 3 words serve a purpose to advise a new student if they should take this course. Here is the review that you have to summarize in 3 words:" + comment 

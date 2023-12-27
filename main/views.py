@@ -4,13 +4,9 @@ from .forms import CreateNewRating
 import datetime
 from .chatgpt import chatgpt_summarize
 from .profanity_check import profanity_check
-import allauth 
 
 def home(request):
-    # with open("main\data\courses.json") as json_data:
-    #     courses =json.load(json_data)
     courses = Course.objects.all()
-    print(allauth.__version__)    
     return render(request,'home.html',{"courses":courses})
 
 def courseHome(request,courseCode):
@@ -71,12 +67,11 @@ def courseHome(request,courseCode):
                 return redirect('/ban/'+user.username)
             
             else:
-                summary = chatgpt_summarize(comment)
-                print(summary)
-                summary_word1=summary.split('.')[0].split(",")[0].upper()
-                summary_word2=summary.split('.')[0].split(",")[1].upper()
-                summary_word3=summary.split('.')[0].split(",")[2].upper()        
-                currentCourse.rating_set.create(author=request.user.username,stars=stars,grade=grade,difficulty=difficulty,comment=comment,date=datetime.datetime.now(),anonymous=anonymous,summary_word1=summary_word1,summary_word2=summary_word2,summary_word3=summary_word3)
+                # summary = chatgpt_summarize(comment)
+                # summary_word1=summary.split('.')[0].split(",")[0].upper()
+                # summary_word2=summary.split('.')[0].split(",")[1].upper()
+                # summary_word3=summary.split('.')[0].split(",")[2].upper()        
+                currentCourse.rating_set.create(author=request.user.username,stars=stars,grade=grade,difficulty=difficulty,comment=comment,date=datetime.datetime.now(),anonymous=anonymous,summary_word1="",summary_word2="",summary_word3="")
                 return redirect('/course/'+courseCode)
             
     form = CreateNewRating()

@@ -67,6 +67,7 @@
 
 <input type="text" id="courseSearch" placeholder="Search for a course..." oninput="filterCourses()">
 
+
 <div id="courseCards">
     {% for course in courses %}
     <div class="courseCard" data-code='{{ course.code }}' data-name='{{ course.name }}' data-credit='{{ course.credit }}'>
